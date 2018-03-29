@@ -5,11 +5,8 @@
 
 
 import requests
-import json
 import pandas as pd
-from citipy import City
 from random import sample
-import json
 import matplotlib.pyplot as plt
 import datetime
 
@@ -18,7 +15,7 @@ import datetime
 
 
 # Read in csv file
-df = pd.read_csv("worldcities.csv")
+df = pd.read_csv("data/worldcities.csv")
 df.head()
 
 
@@ -99,9 +96,6 @@ for index, row in sample_df.iterrows():
     # Update counter
     n += 1
     
-    # View json, pretty format 
-    #print(json.dumps(response, indent=4, sort_keys=True))
-    
     # Append sample df
     sample_df.set_value(index, "Temp", tmp_value)
     sample_df.set_value(index, "Humidity", humidity_value)
@@ -110,13 +104,13 @@ for index, row in sample_df.iterrows():
       
 # Create new csv file for sample_df
 # (This way you won't have to make 500 requests again.)
-sample_df.to_csv("sample_df.csv", sep=",")
+sample_df.to_csv("output/sample_df2.csv", sep=",")
 
 
 # In[ ]:
 
 
-## Transform the columns to be numer
+## Check out appended dataframe
 sample_df.head()
 
 
