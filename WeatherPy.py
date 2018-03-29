@@ -104,7 +104,7 @@ for index, row in sample_df.iterrows():
       
 # Create new csv file for sample_df
 # (This way you won't have to make 500 requests again.)
-sample_df.to_csv("output/sample_df2.csv", sep=",")
+sample_df.to_csv("output/sample_df.csv", sep=",")
 
 
 # In[ ]:
