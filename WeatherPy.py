@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import requests
@@ -11,9 +11,10 @@ from citipy import City
 from random import sample
 import json
 import matplotlib.pyplot as plt
+import datetime
 
 
-# In[2]:
+# In[ ]:
 
 
 # Read in csv file
@@ -21,7 +22,7 @@ df = pd.read_csv("worldcities.csv")
 df.head()
 
 
-# In[3]:
+# In[ ]:
 
 
 # Create new column (temp)
@@ -31,7 +32,7 @@ df["Cloudiness"] = ""
 df["Wind Speed"] = ""
 
 
-# In[4]:
+# In[ ]:
 
 
 # Number of rows in dataframe
@@ -44,10 +45,13 @@ idx = sample(range(nrows), 500)
 sample_df = df.iloc[idx,:]
 
 
-# In[5]:
+# In[ ]:
 
 
 ## Get temp for 500 random cities
+
+# Today's date (for plots)
+now = datetime.datetime.now()
 
 # Loop counter
 n = 0
@@ -109,56 +113,56 @@ for index, row in sample_df.iterrows():
 sample_df.to_csv("sample_df.csv", sep=",")
 
 
-# In[6]:
+# In[ ]:
 
 
 ## Transform the columns to be numer
 sample_df.head()
 
 
-# In[7]:
+# In[ ]:
 
 
 # Temperature vs Latitude
 plt.scatter(sample_df["Temp"], sample_df["Latitude"])
 
-plt.title("Temperature across Latitude")
+plt.title("Temperature across Latitude, " + str(now.year) + "-" + str(now.month) + "-" + str(now.day))
 plt.xlabel("Temperature")
 plt.ylabel("Latitude")
 plt.grid()
 
 
-# In[8]:
+# In[ ]:
 
 
 # Humidity vs Latitude
 plt.scatter(sample_df["Humidity"], sample_df["Latitude"])
 
-plt.title("Humidity across Latitude")
+plt.title("Humidity across Latitude, " + str(now.year) + "-" + str(now.month) + "-" + str(now.day))
 plt.xlabel("Humidity")
 plt.ylabel("Latitude")
 plt.grid()
 
 
-# In[9]:
+# In[ ]:
 
 
 # Cloudiness vs Latitude
 plt.scatter(sample_df["Cloudiness"], sample_df["Latitude"])
 
-plt.title("Cloudiness across Latitude")
+plt.title("Cloudiness across Latitude, " + str(now.year) + "-" + str(now.month) + "-" + str(now.day))
 plt.xlabel("Cloudiness")
 plt.ylabel("Latitude")
 plt.grid()
 
 
-# In[10]:
+# In[ ]:
 
 
 # Wind Speed vs Latitude
 plt.scatter(sample_df["Wind Speed"], sample_df["Latitude"])
 
-plt.title("Wind Speed across Latitude")
+plt.title("Wind Speed across Latitude, " + str(now.year) + "-" + str(now.month) + "-" + str(now.day))
 plt.xlabel("Wind Speed")
 plt.ylabel("Latitude")
 plt.grid()
