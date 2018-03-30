@@ -27,7 +27,7 @@ Your final notebook must:
 * Save both a CSV of all data retrieved and png images for each scatter plot.
 
 ## Solution
-![](https://github.com/megulo25/WeatherPy/blob/master/data/heatmap.png)
+![2018-03-29](https://github.com/megulo25/WeatherPy/blob/master/data/heatmap.png)
 
 ## Copyright
 
