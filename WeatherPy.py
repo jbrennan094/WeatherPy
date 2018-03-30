@@ -39,7 +39,7 @@ nrows = df.shape[0]
 idx = sample(range(nrows), 500)
 
 # Create sample dataframe
-sample_df = df.iloc[idx,:]
+cities_sample = df.iloc[idx,:]
 
 
 # In[ ]:
@@ -60,7 +60,7 @@ base_url = "http://api.openweathermap.org/data/2.5/weather?"
 api_key = "&APPID=78328d7bbd5d23c60c8a243e00bbe313"
 
 # Loop through the sample dataframe and request temperature to append the dataframe
-for index, row in sample_df.iterrows():
+for index, row in cities_sample.iterrows():
     
     # Get Latitude value from sample df
     lat_value = row["Latitude"]
@@ -97,28 +97,28 @@ for index, row in sample_df.iterrows():
     n += 1
     
     # Append sample df
-    sample_df.set_value(index, "Temp", tmp_value)
-    sample_df.set_value(index, "Humidity", humidity_value)
-    sample_df.set_value(index, "Cloudiness", cloudiness_value)
-    sample_df.set_value(index, "Wind Speed", wind_speed_value)
+    cities_sample.set_value(index, "Temp", tmp_value)
+    cities_sample.set_value(index, "Humidity", humidity_value)
+    cities_sample.set_value(index, "Cloudiness", cloudiness_value)
+    cities_sample.set_value(index, "Wind Speed", wind_speed_value)
       
-# Create new csv file for sample_df
+# Create new csv file for cities_sample
 # (This way you won't have to make 500 requests again.)
-sample_df.to_csv("output/sample_df.csv", sep=",")
+cities_sample.to_csv("output/cities_sample.csv", sep=",")
 
 
 # In[ ]:
 
 
 ## Check out appended dataframe
-sample_df.head()
+cities_sample.head()
 
 
 # In[ ]:
 
 
 # Temperature vs Latitude
-plt.scatter(sample_df["Temp"], sample_df["Latitude"])
+plt.scatter(cities_sample["Temp"], cities_sample["Latitude"])
 
 plt.title("Temperature across Latitude, " + str(now.year) + "-" + str(now.month) + "-" + str(now.day))
 plt.xlabel("Temperature")
@@ -130,7 +130,7 @@ plt.grid()
 
 
 # Humidity vs Latitude
-plt.scatter(sample_df["Humidity"], sample_df["Latitude"])
+plt.scatter(cities_sample["Humidity"], cities_sample["Latitude"])
 
 plt.title("Humidity across Latitude, " + str(now.year) + "-" + str(now.month) + "-" + str(now.day))
 plt.xlabel("Humidity")
@@ -142,7 +142,7 @@ plt.grid()
 
 
 # Cloudiness vs Latitude
-plt.scatter(sample_df["Cloudiness"], sample_df["Latitude"])
+plt.scatter(cities_sample["Cloudiness"], cities_sample["Latitude"])
 
 plt.title("Cloudiness across Latitude, " + str(now.year) + "-" + str(now.month) + "-" + str(now.day))
 plt.xlabel("Cloudiness")
@@ -154,7 +154,7 @@ plt.grid()
 
 
 # Wind Speed vs Latitude
-plt.scatter(sample_df["Wind Speed"], sample_df["Latitude"])
+plt.scatter(cities_sample["Wind Speed"], cities_sample["Latitude"])
 
 plt.title("Wind Speed across Latitude, " + str(now.year) + "-" + str(now.month) + "-" + str(now.day))
 plt.xlabel("Wind Speed")
