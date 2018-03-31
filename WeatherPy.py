@@ -1,37 +1,18 @@
-
-# coding: utf-8
-
-# In[ ]:
-
-
 import requests
 import pandas as pd
 from random import sample
 import matplotlib.pyplot as plt
 import datetime
-import sys
-
-
-# In[ ]:
-
 
 # Read in csv file
 df = pd.read_csv("data/worldcities.csv")
 df.head()
-
-
-# In[ ]:
-
 
 # Create new column (temp)
 df["Temp"] = ""
 df["Humidity"] = ""
 df["Cloudiness"] = ""
 df["Wind Speed"] = ""
-
-
-# In[ ]:
-
 
 # Number of rows in dataframe
 nrows = df.shape[0]
@@ -41,9 +22,6 @@ idx = sample(range(nrows), 500)
 
 # Create sample dataframe
 cities_sample = df.iloc[idx,:]
-
-
-# In[ ]:
 
 
 ## Get temp for 500 random cities
@@ -107,16 +85,8 @@ for index, row in cities_sample.iterrows():
 # (This way you won't have to make 500 requests again.)
 cities_sample.to_csv("output/cities_sample.csv", sep=",")
 
-
-# In[ ]:
-
-
 ## Check out appended dataframe
 cities_sample.head()
-
-
-# In[ ]:
-
 
 # Temperature vs Latitude
 plt.scatter(cities_sample["Temp"], cities_sample["Latitude"])
@@ -126,10 +96,6 @@ plt.xlabel("Temperature")
 plt.ylabel("Latitude")
 plt.grid()
 
-
-# In[ ]:
-
-
 # Humidity vs Latitude
 plt.scatter(cities_sample["Humidity"], cities_sample["Latitude"])
 
@@ -137,10 +103,6 @@ plt.title("Humidity across Latitude, " + str(now.year) + "-" + str(now.month) + 
 plt.xlabel("Humidity")
 plt.ylabel("Latitude")
 plt.grid()
-
-
-# In[ ]:
-
 
 # Cloudiness vs Latitude
 plt.scatter(cities_sample["Cloudiness"], cities_sample["Latitude"])
@@ -150,10 +112,6 @@ plt.xlabel("Cloudiness")
 plt.ylabel("Latitude")
 plt.grid()
 
-
-# In[ ]:
-
-
 # Wind Speed vs Latitude
 plt.scatter(cities_sample["Wind Speed"], cities_sample["Latitude"])
 
@@ -161,4 +119,3 @@ plt.title("Wind Speed across Latitude, " + str(now.year) + "-" + str(now.month) 
 plt.xlabel("Wind Speed")
 plt.ylabel("Latitude")
 plt.grid()
-
